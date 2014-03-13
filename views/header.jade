@@ -1,0 +1,36 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+        span.icon-bar
+      a.brand(href='/') CollabNode
+      .nav-collapse
+      if locals.session.user
+        ul.nav.pull-right
+          li.dropdown
+            a#login-info(href="#",data-toggle="dropdown").dropdown-toggle 
+              img(src="http://www.gravatar.com/avatar/#{locals.session.user.md5}", width="30", height="30").header-auth.member
+              span(ng-show="messages.length").notify.badge.badge-important {{messages.length}}
+            ul.dropdown-menu
+              li
+                a(ng-href="/notification") Notifications
+              li
+                a(href="/") View Boards
+              li.divider
+              li
+                a(href="#", ng-click="logout()") Log out
+
+
+        //- a#login-info(href="/user/logout") #{locals.session.user.nickname}(logout)
+if locals.session.user
+  div#createBoardModal.modal.hide.fade(
+    tabindex="-1", role="dialog",aria-labelledby="myModalLabel",aria-hidden="true"
+    ng-controller="boardCtrl")
+    div.modal-header
+      button.close(type="button",data-dismiss="modal", aria-hidden="true") ×
+      h3#myModalLabel Create Board
+    div.modal-body
+      form#board-create-form(ng-submit="createBoard()", name="board-create-form")
+        input(type="text", ng-model="board_name", placeholder="board name")
+        button.btn.btn-success(type="submit") Create
+    div.modal-footer

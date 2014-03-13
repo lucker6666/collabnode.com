@@ -1,0 +1,30 @@
+extends ../layout
+block content
+  style
+    body {
+            //- background: url('../images/background.jpg');
+        }
+  .form-container
+    form.form-horizontal(method='post', action="/user/register")
+      fieldset
+        legend 用户注册
+        .control-group
+          label.control-label(for='nickname') 昵称
+          .controls
+            input#nickname.input-xlarge(type='text', name='nickname')
+        .control-group
+          label.control-label(for='email') 邮箱
+          .controls
+            input#email.required.input-xlarge(type='email', name='email')
+        .control-group
+          label.control-label(for='password') 密码
+          .controls
+            input#password.input-xlarge(type='password', name='password')
+        .control-group
+          label.control-label(for='password-repeat') 确认密码
+          .controls
+            input#password-repeat.input-xlarge(type='password', name='password-repeat')
+        .form-actions
+          span
+            a.span1(href='/user/login', title='还没有帐号？')  › 返回
+          button.btn.btn-success.span2.pull-right(type='submit') 注册

@@ -1,0 +1,13 @@
+{
+  "name": "collab",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "~1.0.7",
+    "jquery": "~1.9.1",
+    "angular-bootstrap":"~0.3.0",
+    "angular-resource":"~1.0.7",
+    "angular-ui":"~0.4.0",
+    "underscore":"~1.4.4",
+    "bootstrap-assets":"2.3.2"
+  }
+}

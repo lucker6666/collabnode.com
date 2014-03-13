@@ -1,0 +1,44 @@
+div.board-list-module
+	div.window-main-col
+		div.board-list-module-title
+			//- span.icon-user
+			h3 My Boards
+			a(data-toggle="modal", href="#createBoardModal") Create Board
+		ul.board-list
+			li(ng-repeat="board in boards")
+				a(href="/board/{{board._id}}") 
+					span {{board.name}}
+				span.board-operation-items.dropdown
+					a(data-toggle="dropdown").board-operation.dropdown-toggle
+						i.icon-chevron-down
+					ul.dropdown-menu
+						li 
+							{{board.name}}
+						li.divider
+						li 
+							a(ng-click="deleteBoard(board._id)") Delete Board
+		div.board-list-module-title
+			h3(ng-show="joinboard_flag") Join Boards
+		ul.board-list
+			li(ng-repeat="board in joinboards")
+				a(href="/board/{{board._id}}") 
+					span {{board.name}}
+				span.board-operation-items.dropdown
+					a(data-toggle="dropdown").board-operation.dropdown-toggle
+						i.icon-chevron-down
+					ul.dropdown-menu
+						li 
+							{{board.name}}
+						li.divider
+						li 
+							a(ng-click="quitBoard()") Quit Board
+	div.window-sidebar
+		a(href="#").profile-member
+			img(src="http://www.gravatar.com/avatar/{{user.md5}}?s=200").profile-member-avatar
+		p
+			//- b {{session.user.nickname}}
+			b {{user.nickname}}
+		p 
+			b {{user.email}}
+
+		

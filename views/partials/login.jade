@@ -1,0 +1,26 @@
+block content
+script
+  $(".alert").alert();
+.form-container
+  form.form-horizontal(method='post', action="/user/login")
+    fieldset
+      legend 用户登陆
+        //- .alert.alert-block.alert-error.fade.in
+        //-   button.close(type="button", data-dismiss="alert") &times
+        //-   p #{tip}.
+      .control-group
+        label.control-label(for='email') 邮箱
+        .controls
+          input#email.required.input-xlarge(type='email', name='email')
+      .control-group
+        label.control-label(for='password') 密码
+        .controls
+          input#password.input-xlarge(type='password', name='password')
+      .form-actions
+        button#sub.btn.btn-success.span2.pull-right(type='submit') 登陆
+        span
+          a.span1(href='/user/register', title='还没有帐号？')  › 注册
+        span
+          a.span1(href='/user/forgetPassword', title='忘记密码？')  › 忘记密码
+          
+          

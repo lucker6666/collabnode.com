@@ -1,0 +1,13 @@
+div.msg-container
+	h1 Notifications
+	ul.msg-list
+			li(ng-repeat="msg in msgs | orderBy:'created_time':true")
+				div.msg-item-userinfo
+					img(src="http://www.gravatar.com/avatar/{{msg.from.md5}}", width="30", height="30")
+					a {{msg.from.nickname}}
+				div.msg-detail
+					span {{msg.content}}
+				div.msg-foot
+					span {{msg.created_time_str}}
+				div.msg-foot-operation
+					a(href="/board/{{msg.board._id}}") {{msg.board.name}}

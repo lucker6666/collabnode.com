@@ -1,0 +1,56 @@
+extends layout
+script
+  $(".collapse").collapse();
+block content
+  #card-container.container
+    each user in users
+      div(id="todoapp-"+user._id).todoapp
+        header
+          h1 #{user.nickname}
+        section(id="main-"+user.id).main
+          //- input#toggle-all(type="checkbox")
+          //- label(for="toggle-all") Mark all as complete
+          ul(id="todo-list-"+user._id).todo-list
+        .input-prepend
+          span.add-on +
+          input(id="new-todo-"+user._id, type="text", placeholder="add new item...").new-todo
+        footer(id="footer-"+user._id)  
+          a#clear-completed Clear completed
+          #todo-count
+      //- #instructions
+      //-   | Double-click to edit a todo.
+
+  script#card-template(type="text/template")
+    |<div id="todoapp">
+    |  <header><h1><%= nickname %></h1></header>
+    |  <section id="main">
+    |     <ul id="todo-list">
+    |     </ul>
+    |     <div class="input-prepend">
+    |       <span class=".add-on">+</span>
+    |       <input id="new-todo" type="text" placeholder="add new item..."/>
+    |     </div>
+    |  </section>
+    |  <footer>
+    |    <a id="clear-completed">Clear completed</a>
+    |    <div id="todo-count"></div>
+    |  </footer>
+
+  script#item-template(type="text/template")
+    |<div class="view">
+    |  <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+    |  <label><%= title %></label>
+    |  <% if(deadline) { %>
+    |     <span class="badge badge-info"><%= deadline %></span>
+    |  <% } %>
+    |  <a class="destroy"></a>
+    |</div>
+    |<input class="edit" type="text" value="<%= title %>" />
+
+  script#stats-template(type="text/template")
+    |<% if (done) { %>
+    |  <a id="clear-completed">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></a>
+    |<% } %>
+    |<div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
+
+  script(type="text/javascript", src="javascripts/todos.js")

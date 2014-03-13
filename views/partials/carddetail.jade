@@ -1,0 +1,88 @@
+div.card-detail-main-col
+	div.card-detail-title
+		p {{card.title}}
+	div.card-detail-desc-title
+		p Description
+	div.card-detail-desc
+		p {{card.description}}
+		a(ng-click="isDescCollapsed = !isDescCollapsed; description = card.description") +add description
+		div(collapse="isDescCollapsed")
+			textarea(ng-model="description")
+			button(ng-click="addDesc()").btn.btn-success save
+	div.card-detail-attach-title
+		p Attachments
+	div.card-detail-attach
+		ul
+			li(ng-repeat="attachment in card.attachments")
+				a(href="{{attachment.link}}", target="_blank") {{attachment.name}}
+				a(ng-click="removeAttachment()", href="#").card-detail-attach-item-operation delete
+				//- div attached by 
+				//- 	a(href="#") {{attachment.attachedBy.nickname}}
+
+
+	div.card-detail-comment-title
+		p Comment
+	div(ng-controller="commentCtrl").card-detail-comment
+		ul.token-input-list-facebook
+			li(ng-repeat="token in tokens").token-input-token-facebook 
+				p {{token.nickname}}
+				span(ng-click="removeToken()").token-input-delete-facebook x
+			li.token-input-input-token-facebook
+				textarea(type="text", ng-model="newcomment",ui-event="{keyup:'search($event)'}")
+		button(ng-click="createComment()", ng-disabled="isDisabled").btn.btn-success comment
+		ul(ng-show="showresult").card-detail-comment-search
+			li(ng-repeat="result in results", ng-click="addToken(result)")
+				img(src="http://www.gravatar.com/avatar/{{result.md5}}", width="30", height="30")
+				span {{result.nickname}}
+		ul.card-detail-comment-list
+			li(ng-repeat="comment in comments | orderBy:'created_time':true")
+				div.card-detail-comment-userinfo
+					img(src="http://www.gravatar.com/avatar/{{comment.author.md5}}", width="30", height="30")
+					a {{comment.author.nickname}}
+				div.card-detail-comment-detail
+					span(ng-repeat="at in comment.at") @{{at.nickname}}
+					span {{comment.content}}
+				div.card-detail-comment-foot
+					span {{comment.created_time_str}}
+					div.card-detail-comment-foot-operation
+						a(ng-click="") edit 
+				//- 		a(ng-click="openReplyInput()") +reply 
+				//- div(collapse="isCollapsedNewReply").card-detail-comment-newreply
+				//- 	img(src="http://www.gravatar.com/avatar/{{comment.author.md5}}", width="30", height="30")
+				//- 	div.input-append.card-detail-comment-newreply-input
+				//- 		ul.token-input-list-facebook
+				//- 			li(ng-repeat="token in tokens").token-input-token-facebook 
+				//- 				p {{token.nickname}}
+				//- 			li.token-input-input-token-facebook
+				//- 				input(type="text",ng-model="newreply", ui-event="{keyup:'searchInReply($event)'}", ui-keypress="{13:'addReply($event)'}")
+								//- button(ng-click="addReply()").btn reply
+
+div.card-detail-sidebar
+	div.sidebar-members
+		div.sidebar-members-title Members
+		div.sidebar-members-list
+			img(src="http://www.gravatar.com/avatar/{{user.md5}}", width="30", height="30")
+			img(src="http://www.gravatar.com/avatar/{{user.md5}}", width="30", height="30")
+			img(src="http://www.gravatar.com/avatar/{{user.md5}}", width="30", height="30")
+
+	div.sidebar-actions
+		div.sidebar-actions-title Actions
+		//- div(ui-calendar)
+		div.sidebar-action-attach
+			a(ng-click="isAttachCollapsed = !isAttachCollapsed").btn attach files
+			div(collapse="isAttachCollapsed")
+				div(ng-click="chooseFromDropbox()").dropbox-chooser
+				input(type="dropbox-chooser",name="selected-file",id="db-chooser").hide
+				//- div(ng-click="chooseFromDropbox()").dropbox-chooser
+				//- input(type="dropbox-chooser",name="selected-file",id="db-chooser").hide
+				
+		div.sidebar-actions-delete
+			a(ng-click="isCollapsed = !isCollapsed").btn delete card
+			div(collapse="isCollapsed")
+				div.delete-box
+					input(ng-model="cardname", type="text",placeholder="input card name")
+					button(ng-click="deleteCard()", ng-disabled="cardname != card.title").btn.btn-danger delete this card
+		div.sidebar-actions-archive
+			a.btn archive
+
+		

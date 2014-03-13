@@ -1,0 +1,262 @@
+/**
+ * This Stylus file will be compiled to todos.css automatically by node when
+ * the server is started and a todos.css file doesn't exist.  To regenerate
+ * todos.css, simply delete the file and reload the app in a browser window.
+ *
+ * To see how the css file is generated look at app.js.
+ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  background: #eee;
+  color: #333;
+  margin: 0 auto;
+}
+.form-container {
+  width: 530px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+}
+.form-horizontal .form-actions {
+  background-color: #fff;
+  margin-right: 40px;
+  padding-left: 150px;
+}
+.navbar .brand {
+  font-weight: bold;
+}
+.todoapp {
+  background: #beb4b4;
+  padding: 5px 20px 20px 20px;
+  width: 330px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  -webkit-box-shadow: rgba(0,0,0,0.2) 0 2px 6px 0;
+  -moz-box-shadow: rgba(0,0,0,0.2) 0 2px 6px 0;
+  -ms-box-shadow: rgba(0,0,0,0.2) 0 2px 6px 0;
+  -o-box-shadow: rgba(0,0,0,0.2) 0 2px 6px 0;
+  box-shadow: rgba(0,0,0,0.2) 0 2px 6px 0;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  -ms-border-radius: 0 0 5px 5px;
+  -o-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  float: left;
+}
+.todoapp h1 {
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 15px;
+}
+.todoapp input[type="text"] {
+  width: 290px;
+  font-size: 14px;
+  height: 20px;
+  border: 1px solid #7e8694;
+}
+.todoapp .add-on {
+  border: 1px solid #7e8694;
+}
+.todoapp input-webkit-input-placeholder {
+  font-style: italic;
+}
+.todoapp footer {
+  display: none;
+  margin: 0 -20px -20px -20px;
+  overflow: hidden;
+  color: #fff;
+  background: #6984a2;
+  border-top: 1px solid #687fa2;
+  padding: 0 20px;
+  line-height: 37px;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  -ms-border-radius: 0 0 5px 5px;
+  -o-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+}
+.main {
+  display: none;
+}
+.main label {
+  display: inline;
+}
+.todo-list {
+  margin: 10px 0;
+  padding: 0;
+  list-style: none;
+}
+.todo-list li {
+  background-color: #fff;
+  border: 1px solid #758894;
+  cursor: pointer;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  padding: 10px 20px 10px 0;
+  position: relative;
+  font-size: 24px;
+  margin-bottom: 5px;
+  padding: 6px 8px 10px;
+}
+.todo-list li:hover {
+  border-color: #1f6993;
+  -webkit-box-shadow: 0 8px 12px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 8px 12px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 8px 12px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.2);
+  -ms-box-shadow: 0 8px 12px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.2);
+  -o-box-shadow: 0 8px 12px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.2);
+  -webkit-transform: rotate(0);
+  transform: rotate(0);
+}
+.todo-list li label {
+  font-size: 14px;
+}
+.todo-list li.done label {
+  color: #777;
+  text-decoration: line-through;
+}
+.todo-list li .destroy {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  display: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background: url("/images/destroy.png") no-repeat;
+}
+.todo-list li .destroy:hover {
+  background-position: 0 -20px;
+}
+.todo-list li:hover .destroy {
+  display: block;
+}
+.todo-list li.locked {
+  color: #aaa;
+}
+.todo-list li.locked:hover .destroy {
+  display: none;
+}
+.todo-list li.editing {
+  border-bottom: none;
+  margin-top: -1px;
+  padding: 0;
+}
+.todo-list li.editing .view {
+  display: none;
+}
+.todo-list li.editing .edit {
+  display: block;
+  width: 444px;
+  padding: 13px 15px 14px 20px;
+  margin: 0;
+}
+.todo-list li.editing:last-child {
+  margin-bottom: -1px;
+}
+.todo-list li .view label {
+  word-break: break-word;
+}
+.todo-list li .edit {
+  display: none;
+}
+#clear-completed {
+  float: right;
+  line-height: 20px;
+  text-decoration: none;
+  background: rgba(0,0,0,0.1);
+  color: #555;
+  font-size: 11px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 0 10px 1px;
+  cursor: pointer;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-box-shadow: rgba(0,0,0,0.2) 0 -1px 0 0;
+  -moz-box-shadow: rgba(0,0,0,0.2) 0 -1px 0 0;
+  -ms-box-shadow: rgba(0,0,0,0.2) 0 -1px 0 0;
+  -o-box-shadow: rgba(0,0,0,0.2) 0 -1px 0 0;
+  box-shadow: rgba(0,0,0,0.2) 0 -1px 0 0;
+}
+#clear-completed:hover {
+  background: rgba(0,0,0,0.15);
+  -webkit-box-shadow: rgba(0,0,0,0.3) 0 -1px 0 0;
+  -moz-box-shadow: rgba(0,0,0,0.3) 0 -1px 0 0;
+  -ms-box-shadow: rgba(0,0,0,0.3) 0 -1px 0 0;
+  -o-box-shadow: rgba(0,0,0,0.3) 0 -1px 0 0;
+  box-shadow: rgba(0,0,0,0.3) 0 -1px 0 0;
+}
+#clear-completed:active {
+  position: relative;
+  top: 1px;
+}
+#todo-count span {
+  font-weight: bold;
+}
+#instructions {
+  margin: 10px auto;
+  color: #777;
+  text-shadow: rgba(255,255,255,0.8) 0 1px 0;
+  text-align: center;
+}
+#instructions a {
+  color: #369;
+}
+#credits {
+  margin: 30px auto;
+  color: #999;
+  text-shadow: rgba(255,255,255,0.8) 0 1px 0;
+  text-align: center;
+}
+#credits a {
+  color: #888;
+}
+#login-info {
+  float: right;
+  color: #fff;
+  margin-top: 10px;
+}
+.open-card-composer {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  color: #939393;
+  display: block;
+  margin: 2px -3px -3px;
+  padding: 7px 10px;
+  position: relative;
+  text-decoration: none;
+}
+.open-card-composer:hover {
+  background: #c3c3c3;
+  color: #222;
+  text-decoration: underline;
+}
+.open-card-composer::selection {
+  background: transparent;
+}
+.list-card {
+  background-color: #fff;
+  border: 1px solid #b9b9b9;
+  cursor: pointer;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}

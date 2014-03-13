@@ -1,0 +1,49 @@
+#card-container.container
+	div.card-list-search-user
+		input(ng-model="email", type="text", typeahead="result.email for result in search($viewValue)")
+		button(ng-click="addMember()").addMember.btn Add Member
+	//- input(ng-model="username", type="text", ui-event="{keyup: 'search()'}")
+	//- {{username}}
+	//- ul
+	//- 	li(ng-repeat="result in results")
+	//- 		{{result.email}}
+	div(ng-repeat="member in members").list
+		div.card-header
+			span {{member.nickname}}
+			div.dropdown
+				a(href="#",data-toggle="dropdown").dropdown-toggle 
+					img(src="http://www.gravatar.com/avatar/{{member.md5}}", width="60", height="60").pull-right
+				ul(ng-show="session.user._id != member._id").dropdown-menu.main-menu
+					li
+						a(href="/user/{{member._id}}") View Profile
+					li.divider
+					li.dropdown-submenu
+						a(tabindex='-1', href="#") More actions
+						ul.dropdown-menu
+							li
+								a(href="#", tabindex="-1", ng-click="removeMember()") Remove
+					
+		div(ng-controller="cardCtrl").card-list
+			section.main
+				ul.list-cards				
+					//- li(ng-controller="cardItemCtrl",data-toggle="modal", ng-click="openCardEditDialog($event)",ng-repeat="card in cards | filter:filterByOwner").list-card
+					li(ng-controller="cardItemCtrl",data-toggle="modal", ng-click="openCardEditDialog($event)",ng-repeat="card in cards").list-card
+						span {{card.title}}
+			div.input-prepend
+				span.add-on +	
+				input(type="text", placeholder="add new item...", ng-model="card_title", ui-keypress="{13:'createCard($event)'}").newcard
+			
+			footer.count
+				{{cards.length}} left
+
+//- a(href="#/card") cardme
+//- div#cardDetailModal.modal.hide.fade(tabindex="-1", role="dialog",aria-labelledby="myModalLabel",aria-hidden="true", ng-controller="cardItemDialogCtrl")
+//- 	//- div(ui-view="cardDetail")
+//- 	div.card-detail-main-col
+//- 		div.card-detail-title
+//- 			p {{currentCard.title}}
+//- 		div(ng-controller="commentCtrl").card-detail-comment
+//- 			input(type='text', ng-model="newcomment")
+//- 			ul.card-detail-comment-list
+//- 				li(ng-repeat="comment in comments")
+//- 					label comment.content

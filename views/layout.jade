@@ -1,0 +1,74 @@
+doctype 5
+html(ng-app="collabApp")
+  head
+    title CollabNode
+    link(rel='stylesheet', href='/vendor/bootstrap-assets/css/bootstrap.css')
+    link(rel="stylesheet", href="/vendor/bootstrap-assets/css/bootstrap-responsive.css")
+    link(rel='stylesheet', href='/css/tokeninput.css')
+    link(rel='stylesheet', href='/css/core.css')
+    
+
+    script(src="/vendor/jquery/jquery.min.js")
+    script(src="https://www.dropbox.com/static/api/1/dropins.js",id="dropboxjs",data-app-key="322xhbbozdl0ry4")
+    script(src="/vendor/angular/angular.min.js")
+    script(src="/vendor/angular-resource/angular-resource.min.js")
+    script(src="/vendor/angular-ui/build/angular-ui.min.js")
+    script(src="/vendor/bootstrap-assets/js/bootstrap.min.js")
+    script(src="/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js")
+    script(src="/vendor/underscore/underscore-min.js")
+    script(src="https://github.com/loopj/jquery-tokeninput/raw/master/src/jquery.tokeninput.js")
+    script(src="/socket.io/socket.io.js")
+    
+    //- script(src="/js/app.min.js")
+    script(src="/js/app.js")
+    script(src="/js/controllers.js")
+    script(src="/js/filters.js")
+    script(src="/js/services.js")
+    script(src="/js/dropboxchooser.js")
+    script(src="/js/directives.js")
+    //- script
+    //-   $j("#chooser-demo").on("DbxChooserSuccess", function(evt) {
+    //-   $j("#demo-urls").empty();
+    //-   var files = evt.originalEvent.files;
+    //-   for(var i=0; i<files.length; i++) {
+    //-       $link = $j('<a/>', {
+    //-           'href': files[i].link,
+    //-           'text': files[i].link,
+    //-           'target': "blank_"
+    //-       }).append("<br/>")
+    //-       $j("#demo-urls").append($link)
+    //-     }
+    //-   });
+    style
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    script
+      $(document).ready(function()
+      {
+        //Handles menu drop down
+        $('.dropdown-menu').find('form').click(function (e) {
+          e.stopPropagation();
+        });
+      });
+  if locals.session.user
+    body(ng-controller="appCtrl")
+      include header
+      block content
+  else
+    body
+      include header
+      block content
+    
+
+//- if !locals.session.user
+  //- #credits
+  //-   | Copyright by&nbsp;
+  //-   a(href="http://jgn.me/") J&eacute;r&ocirc;me Gravel-Niquet
+  //-   br
+  //-   | Rewritten by&nbsp;
+  //-   a(href="http://addyosmani.github.com/todomvc") Addy Osmani
+  //-   br
+  //-   | Node.js, Socket.io, MongoDB, Redis added by&nbsp;
+  //-   a(href="https://github.com/jamesor") James O'Reilly
